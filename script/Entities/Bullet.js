@@ -7,7 +7,13 @@ ENGINE.Bullet = function(args) {
     lifespan: 2
   }, args);
 
-  this.radius = 3;
+  this.sprite = [71, 51, 7, 8];
+
+//  this.sprite = this.sprites[this.team];
+
+  this.width = this.sprite[2];
+  this.height = this.sprite[3];
+  this.radius = Math.min(this.width, this.height) / 2 | 0;
 
 };
 
@@ -50,8 +56,13 @@ ENGINE.Bullet.prototype = {
 
   render: function() {
 
-    app.layer.fillStyle("#fff").fillRect(this.x - 4, this.y - 4, 8, 8);
+    app.layer.save();
 
+    app.layer.translate(this.x, this.y);
+    app.layer.scale(this.scale, this.scale);
+    app.layer.drawRegion(app.images.spritesheet, this.sprite, -this.width / 2, -this.height / 2);
+
+    app.layer.restore();
   }
 
 };
