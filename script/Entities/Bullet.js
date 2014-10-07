@@ -7,9 +7,7 @@ ENGINE.Bullet = function(args) {
     lifespan: 2
   }, args);
 
-  this.sprite = [71, 51, 7, 8];
-
-//  this.sprite = this.sprites[this.team];
+  this.sprite = this.sprites[this.team];
 
   this.width = this.sprite[2];
   this.height = this.sprite[3];
@@ -24,6 +22,11 @@ ENGINE.Bullet.prototype = {
   zIndex: 3,
 
   collidable: true,
+
+  sprites: [
+  [71, 51, 7, 8]
+],
+
 
   collision: function(entity) {
 
